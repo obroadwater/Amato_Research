@@ -40,14 +40,12 @@ res <- read_excel("Translated_Jan_Feb_March/20250315_Ewat_Herman_Rama_NN_transla
 
 
 combine_translated <- function(folder_path){
-  count_obs <- 0
   df_to_ret <- data.frame()
   files <- list.files(folder_path)
   first_file = TRUE
   for(file in files){
     print(file)
     xl <- read_excel(paste0(folder_path, "/", file), col_types = "text")
-    count_obs <- count_obs + nrow(xl)
     if (first_file){
       df_to_ret <- xl
     }else{
@@ -55,7 +53,6 @@ combine_translated <- function(folder_path){
     }
     first_file <- FALSE
   }
-  print(count_obs)
   return(df_to_ret)
 }
 
